@@ -9,7 +9,7 @@ const Heading = ({ children }) => {
     const { user } = useUserStore()
 
     return (
-        <div className='relative flex justify-between items-center border-b p-2 mb-2'>
+        <div className='flex justify-between items-center border-b px-2 mb-2'>
             <div
                 onClick={() => {
                     navigate(-1)

@@ -29,20 +29,16 @@ function App() {
         <Section/>
       </Layout>}/>
 
-      <Route path='/attendences' element={<Layout>
-        <Attendence/>
+      <Route path='/section/new' element={<Layout>
+        <New_employee/>
       </Layout>}/>
 
-      <Route path='/salary' element={<Layout>
-        <Salary/>
+      <Route path='/section/:id' element={<Layout>
+        <Employee/>
       </Layout>}/>
 
-      <Route path='/attendance/in' element={<Layout>
-        <Attendance_In/>
-      </Layout>}/>
-
-      <Route path='/attendance/out' element={<Layout>
-        <Attendance_Out/>
+      <Route path='/section/update/:id' element={<Layout>
+        <Update_employee/>
       </Layout>}/>
 
       <Route path='/employees' element={<Layout>
@@ -60,6 +56,23 @@ function App() {
       <Route path='/employee/update/:id' element={<Layout>
         <Update_employee/>
       </Layout>}/>
+
+      <Route path='/attendences' element={<Layout>
+        <Attendence/>
+      </Layout>}/>
+
+      <Route path='/attendance/in' element={<Layout>
+        <Attendance_In/>
+      </Layout>}/>
+
+      <Route path='/attendance/out' element={<Layout>
+        <Attendance_Out/>
+      </Layout>}/>
+
+      <Route path='/salary' element={<Layout>
+        <Salary/>
+      </Layout>}/>
+
       <Route path='*' element={<Layout>
         <Error404/>
       </Layout>}/>

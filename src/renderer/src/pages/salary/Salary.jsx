@@ -3,8 +3,10 @@ import {Heading} from '../../components/Index';
 
 const Salary = () => {
     return (
-        <div>
-            <Heading>Section</Heading>
+        <div
+            className='px-2'
+        >
+            <Heading>Salary</Heading>
         </div>
     );
 };

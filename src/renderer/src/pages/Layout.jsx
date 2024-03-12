@@ -7,7 +7,7 @@ import useUserStore from '../_store/userStore';
 
 
 const Layout = ({ children }) => {
-    const { user } = useUserStore()
+    const { user,removeUser } = useUserStore()
     const sideData = [
         {
             title: 'Home',
@@ -40,6 +40,10 @@ const Layout = ({ children }) => {
             path: '/salary'
         },
     ]
+
+    const handleLogout=()=>{
+        removeUser()
+    }
     return (
         <Protected>
             <div
@@ -74,9 +78,9 @@ const Layout = ({ children }) => {
                         }
                     </div>
                     <div
-                        className='absolute bottom-0 w-full cursor-pointer'
+                        className='absolute group bottom-0 w-full cursor-pointer'
                     >
-                        <div className='px-4 py-2 flex justify-between items-center space-x-2 bg-sky-500 text-white'
+                        <div className='px-4 py-2 flex justify-between items-center space-x-2 bg-sky-500 text-white group-hover:blur-[1px]'
                         >
                             <img
                                 src={user_icon}
@@ -89,6 +93,12 @@ const Layout = ({ children }) => {
                                 <p className='text-sm'>{user?.name}</p>
                                 <p className='text-xs'>{user?.email}</p>
                             </div>
+                        </div>
+                        <div
+                            onClick={handleLogout}
+                            className='absolute w-full h-full top-0 hidden group-hover:flex items-center justify-center bg-red-500/60 text-white text-lg font-bold'
+                        >
+                            Logout
                         </div>
                     </div>
                 </div>

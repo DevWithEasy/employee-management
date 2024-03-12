@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { MdDelete, MdEditSquare } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Delete_data, Heading} from '../../components/Index';
 import baseUrl from '../../_utils/baseUrl';
 import useUserStore from '../../_store/userStore';
@@ -28,15 +28,30 @@ const Users = () => {
     },[])
     return (
         <div
-            className='p-2'
+            className='px-2 space-y-2'
         >
             <Heading>Users</Heading>
-            <input
+            <div
+                className='flex justify-between items-center'
+            >
+                <input
                 type="search"
                 onChange={(e) => setQuery(e.target.value.toLowerCase())}
                 placeholder='Search by name,email,phone'
-                className='mb-2 w-[350px] py-1 px-4 border border-gray-300 focus:outline-none placeholder:text-gray-300 placeholder:text-sm rounded-full'
+                className='w-[350px] py-2 px-4 border border-gray-300 focus:outline-none placeholder:text-gray-300 placeholder:text-sm rounded-full'
             />
+                <div
+                    className='w-full flex justify-end'
+                >
+                    <Link
+                        to='/user/new'
+                        className='px-4 py-2 bg-sky-500 text-white'
+                    >
+                        Add New User
+                    </Link>
+                </div>
+            </div>
+            
             <div className="relative overflow-x-auto space-y-3">
                 <table className="w-full text-sm text-left text-gray-500">
                     <thead className="text-xs text-gray-700 uppercase bg-blue-50">

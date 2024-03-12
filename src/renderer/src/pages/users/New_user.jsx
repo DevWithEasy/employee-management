@@ -4,7 +4,7 @@ import {
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Heading, Loading_request} from '../../components/Index';
+import { Heading, Loading_request } from '../../components/Index';
 import toast_alert from '../../_utils/toast_alert';
 import baseUrl from '../../_utils/baseUrl';
 import handleChange from '../../_utils/handleChange';
@@ -57,53 +57,62 @@ const New_user = () => {
         }
     }
     return (
-        <div className='p-2'>
-            <Heading>Add new user (Shop)</Heading>
+        <div className='px-2'>
+            <Heading>Add new user (Adminitration)</Heading>
             <form
                 onSubmit={(e) => createUser(e)}
-                className='w-1/2 mx-auto space-y-2 p-4 bg-white rounded shadow'
+                className='p-4 space-y-4'
             >
-                <div className='space-y-2'>
-                    <label htmlFor="">Name :</label>
-                    <input
-                        type='text'
-                        name='name'
-                        onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
-                    />
-                </div>
-                <div className='space-y-2'>
-                    <label htmlFor="">Email address :</label>
-                    <input
-                        type='text'
-                        name='email'
-                        onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
-                    />
-                </div>
-                <div className='space-y-2'>
-                    <label htmlFor="">Phone number :</label>
-                    <input
-                        type='text'
-                        name='phone'
-                        onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
-                    />
-                </div>
-                <div className='space-y-2'>
-                    <label htmlFor="">Password :</label>
-                    <input
-                        type='text'
-                        name='password'
-                        onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
-                    />
+                <div
+                    className='grid grid-cols-2 gap-4'
+                >
+                    <div className='space-y-2'>
+                        <label htmlFor="">Name :</label>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={(e) => handleChange(e, value, setValue)}
+                            placeholder='Enter user name'
+                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        />
+                    </div>
+                    <div className='space-y-2'>
+                        <label htmlFor="">Email address :</label>
+                        <input
+                            type='text'
+                            name='email'
+                            onChange={(e) => handleChange(e, value, setValue)}
+                            placeholder='Enter user email address'
+                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        />
+                    </div>
+                    <div className='space-y-2'>
+                        <label htmlFor="">Phone number :</label>
+                        <input
+                            type='text'
+                            name='phone'
+                            onChange={(e) => handleChange(e, value, setValue)}
+                            placeholder='Enter user phone number'
+                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        />
+                    </div>
+                    <div className='space-y-2'>
+                        <label htmlFor="">Password :</label>
+                        <input
+                            type='text'
+                            name='password'
+                            onChange={(e) => handleChange(e, value, setValue)}
+                            placeholder='Enter your password'
+                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        />
+                    </div>
                 </div>
                 <div className='space-y-2'>
                     <label htmlFor="">Address :</label>
                     <textarea
                         name='address'
                         onChange={(e) => handleChange(e, value, setValue)}
+                        placeholder='Enter user address'
                         className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
                     />
                 </div>

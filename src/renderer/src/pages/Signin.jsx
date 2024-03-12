@@ -59,13 +59,13 @@ const Signin = () => {
         <div
             className='h-screen w-full flex justify-center  bg-sky-500 text-white'
         >
-            <div className='pt-10 space-y-5'>
+            <div className='pt-10 w-[350px] space-y-5'>
                 <div>
-                <img
-                    src={logo}
-                    className='w-[100px] mx-auto rounded-full'
-                />
-                <p className='text-2xl text-center'> Administration</p>
+                    <img
+                        src={logo}
+                        className='w-[100px] mx-auto rounded-full'
+                    />
+                    <p className='text-2xl text-center'> Administration</p>
                 </div>
                 <form
                     onSubmit={(e) => signin(e)}
