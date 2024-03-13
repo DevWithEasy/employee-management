@@ -1,13 +1,13 @@
 import React from 'react'
 import Protected from './Protected'
 import logo from '../assets/logo.png'
-import { attendence_icon,employee_icon,home_icon,salary_icon,users_icon,section_icon,user_icon} from '../assets/_icons/_icons';
+import { attendence_icon,employee_icon,home_icon,salary_icon,users_icon,section_icon,user_icon,designation_icon} from '../assets/_icons/_icons';
 import { NavLink } from 'react-router-dom';
-import useUserStore from '../_store/userStore';
+import useStore from '../_store/userStore';
 
 
 const Layout = ({ children }) => {
-    const { user,removeUser } = useUserStore()
+    const { user,removeUser } = useStore()
     const sideData = [
         {
             title: 'Home',
@@ -23,6 +23,11 @@ const Layout = ({ children }) => {
             title: 'Section',
             image: section_icon,
             path: '/section'
+        },
+        {
+            title: 'Designation',
+            image: designation_icon,
+            path: '/designation'
         },
         {
             title: 'Employee',

@@ -1,13 +1,11 @@
-import { useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { MdDelete, MdEditSquare } from 'react-icons/md';
 import { getData } from '../../_api/_apicrud';
 import useStore from '../../_store/userStore';
-import { Delete_data, Heading, Section_Add, Section_Update } from '../../components/Index'
+import { Delete_data, Designation_Add, Designation_Update, Heading } from '../../components/Index';
 
-const Section = () => {
-    const toast = useToast()
-    const { addSections, sections } = useStore()
+const Designnation = () => {
+    const { addDesignations, designations } = useStore()
     const [id, setId] = useState(false)
     const [add, setAdd] = useState(false)
     const [update, setUpdate] = useState(false)
@@ -16,9 +14,8 @@ const Section = () => {
 
     useEffect(() => {
         getData({
-            toast,
-            path : 'section',
-            action : addSections
+            path : 'designation',
+            action : addDesignations
         })
     }, [])
 
@@ -26,7 +23,7 @@ const Section = () => {
         <div
             className='px-2 space-y-2'
         >
-            <Heading>Section</Heading>
+            <Heading>Designnation</Heading>
             <div
                 className='flex justify-between items-center'
             >
@@ -40,10 +37,10 @@ const Section = () => {
                     className='w-full flex justify-end'
                 >
                     <button
-                        onClick={()=>setAdd(!add)}
+                        onClick={() => setAdd(!add)}
                         className='px-4 py-2 bg-sky-500 text-white'
                     >
-                        Add New Section
+                        Add New Designnation
                     </button>
                 </div>
             </div>
@@ -64,18 +61,18 @@ const Section = () => {
                     </thead>
                     <tbody>
                         {
-                            sections.filter(section => section.name.toLowerCase().includes(query))
-                                .map((section, i) => <tr
-                                    key={section._id}
+                            designations.filter(designation => designation.name.toLowerCase().includes(query))
+                                .map((designation, i) => <tr
+                                    key={designation._id}
                                     className='bg-white'
                                 >
                                     <td className="px-6 py-3">{i + 1}</td>
-                                    <td className="px-6 py-3">{section?.name}</td>
+                                    <td className="px-6 py-3">{designation?.name}</td>
                                     <td className="px-6 py-3 text-center space-x-2">
                                         <button
                                             onClick={() => {
                                                 setUpdate(!update)
-                                                setId(section?._id)
+                                                setId(designation?._id)
                                             }}
                                             className='p-1.5 bg-green-400 text-white rounded-md'
                                         >
@@ -84,7 +81,7 @@ const Section = () => {
                                         <button
                                             onClick={() => {
                                                 setRemove(!remove)
-                                                setId(section?._id)
+                                                setId(designation?._id)
                                             }}
                                             className='p-1.5 bg-red-500 text-white rounded-md'
                                         >
@@ -95,18 +92,18 @@ const Section = () => {
                         }
                     </tbody>
                 </table>
-                {add && <Section_Add {...{
+                {add && <Designation_Add {...{
                     view : add,
                     setView : setAdd
                 }} />}
-                {update && <Section_Update {...{
+                {update && <Designation_Update {...{
                     id,
                     view : update,
                     setView : setUpdate
                 }} />}
                 {remove && <Delete_data {...{
                     id,
-                    path: 'section',
+                    path: 'designation',
                     remove,
                     setRemove
                 }} />}
@@ -115,4 +112,4 @@ const Section = () => {
     );
 };
 
-export default Section;
+export default Designnation;

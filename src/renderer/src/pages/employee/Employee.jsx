@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { Heading, EmployeeCard, EmployeeDetails } from '../../components/Index';
-import useUserStore from '../../_store/userStore';
+import useStore from '../../_store/userStore';
 import Protected from '../Protected';
 
 const Employee = () => {
-    const { employees } = useUserStore();
+    const { employees } = useStore();
     const { id } = useParams()
     const employee = employees.find(u => u._id === id)
 

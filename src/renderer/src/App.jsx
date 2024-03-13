@@ -1,6 +1,6 @@
 import {Routes,Route} from 'react-router-dom'
 import Home from './pages/Home'
-import { Attendance_In, Attendance_Out, Attendence, Employee, Employees, New_employee, Salary, Section, Signin, Signup, Update_employee, Users,New_user,Update_user, Error404 } from './pages/Index'
+import { Attendance_In, Attendance_Out, Attendence, Employee, Employees, New_employee, Salary, Section, Signin, Signup, Update_employee, Users,New_user,Update_user, Error404, Designnation, Update_Attendance, Monthly_attendance, Monthly_attendance_book } from './pages/Index'
 import Layout from './pages/Layout'
 function App() {
   // const ipcHandle = () => window.electron.ipcRenderer.send('ping')
@@ -18,9 +18,11 @@ function App() {
       <Route path='/users' element={<Layout>
         <Users/>
       </Layout>}/>
+
       <Route path='/user/new' element={<Layout>
         <New_user/>
       </Layout>}/>
+
       <Route path='/user/:id' element={<Layout>
         <Update_user/>
       </Layout>}/>
@@ -29,16 +31,8 @@ function App() {
         <Section/>
       </Layout>}/>
 
-      <Route path='/section/new' element={<Layout>
-        <New_employee/>
-      </Layout>}/>
-
-      <Route path='/section/:id' element={<Layout>
-        <Employee/>
-      </Layout>}/>
-
-      <Route path='/section/update/:id' element={<Layout>
-        <Update_employee/>
+      <Route path='/designation' element={<Layout>
+        <Designnation/>
       </Layout>}/>
 
       <Route path='/employees' element={<Layout>
@@ -61,12 +55,24 @@ function App() {
         <Attendence/>
       </Layout>}/>
 
-      <Route path='/attendance/in' element={<Layout>
+      <Route path='/attendence/out' element={<Layout>
+        <Attendance_Out/>
+      </Layout>}/>
+
+      <Route path='/attendence/in' element={<Layout>
         <Attendance_In/>
       </Layout>}/>
 
-      <Route path='/attendance/out' element={<Layout>
-        <Attendance_Out/>
+      <Route path='/attendence/update' element={<Layout>
+        <Update_Attendance/>
+      </Layout>}/>
+
+      <Route path='/attendence/monthly' element={<Layout>
+        <Monthly_attendance/>
+      </Layout>}/>
+
+      <Route path='/attendence/book' element={<Layout>
+        <Monthly_attendance_book/>
       </Layout>}/>
 
       <Route path='/salary' element={<Layout>

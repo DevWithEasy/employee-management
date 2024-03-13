@@ -10,7 +10,7 @@ const Attendence = () => {
             <Heading>Attendence</Heading>
             <div>
                 <Link
-                    to='/attendance/in'
+                    to='/attendence/in'
                     className='px-4 py-1 border-l border-y'
                 >
                     In time

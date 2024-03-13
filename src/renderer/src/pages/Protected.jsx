@@ -1,9 +1,9 @@
 import React from 'react';
-import useUserStore from '../_store/userStore';
+import useStore from '../_store/userStore';
 import { Navigate } from 'react-router-dom';
 
 const Protected = ({children}) => {
-    const {isAuth} = useUserStore()
+    const {isAuth} = useStore()
     return isAuth ? children : <Navigate to='signin'/>
 };
 

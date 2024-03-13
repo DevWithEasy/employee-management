@@ -5,12 +5,9 @@ const createUserStore = (set)=>({
     isAuth : false,
     user : {},
     users : [],
-    products : [],
-    categories : [],
-    customers : [],
-    purchases : [],
-    invoices : [],
-    reports : [],
+    sections : [],
+    designations : [],
+    attendences : [],
     employees : [],
 
     addUser : (data)=>{
@@ -24,9 +21,10 @@ const createUserStore = (set)=>({
             isAuth : false,
             user : {},
             users : [],
-            companies : [],
-            generics : [],
-            customers : [],
+            sections : [],
+            designations : [],
+            attendences : [],
+            employees : [],
         }))
     },
     addUsers : (users)=>{
@@ -34,14 +32,24 @@ const createUserStore = (set)=>({
             users : users
         }))
     },
-    addProducts : (products)=>{
+    addSections : (sections)=>{
         set((state)=>({
-            products : products
+            sections : sections
         }))
     },
-    addCategoties : (categories)=>{
+    addSection : (section)=>{
         set((state)=>({
-            categories : categories
+            sections : [...state.sections, section]
+        }))
+    },
+    addDesignations : (designations)=>{
+        set((state)=>({
+            designations : designations
+        }))
+    },
+    addDesignation : (designation)=>{
+        set((state)=>({
+            designations : [...state.designations, designation]
         }))
     },
     addEmployees : (employees)=>{
@@ -49,53 +57,41 @@ const createUserStore = (set)=>({
             employees : employees
         }))
     },
-    addCustomers : (customers)=>{
+    addAttendences : (attendences)=>{
         set((state)=>({
-            customers : customers
+            attendences : attendences
         }))
     },
-    addPurchases : (purchases)=>{
-        set((state)=>({
-            purchases : purchases
-        }))
-    },
-    addInvoices : (invoices)=>{
-        set((state)=>({
-            invoices : invoices
-        }))
-    },
-    addReports : (reports)=>{
-        set((state)=>({
-            reports : reports
-        }))
+    updateEntity : (path,data)=>{
+        set((state)=>{
+            if (path === 'designation'){
+                return {designations : state.designations.map(designation=>designation._id === data._id ? data : designation)}
+            }else if (path === 'section'){
+                return {sections : state.sections.map(section=>section._id === data._id ? data : section)}
+            }
+        })
     },
     removeEntity : (path,id)=>{
         set((state)=>{
-            if (path === 'product'){
-                    return {products : state.products.filter(product=>product._id !== id)}
-            }else if (path === 'company'){
-                    return {companies : state.companies.filter(company=>company._id !== id)}
+            if (path === 'attendence'){
+                    return {attendences : state.attendences.filter(attendence=>attendence._id !== id)}
             }else if (path === 'employee'){
-                return {employees : state.employees.filter(employee=>employee._id !== id)}
-            } else if (path === 'report'){
-                return {reports : state.reports.filter(report=>report._id !== id)}
-            }else if (path === 'purchase'){
-                return {purchases : state.purchases.filter(purchase=>purchase._id !== id)}
-            }else if (path === 'invoice'){
-                return {invoices : state.invoices.filter(invoice=>invoice._id !== id)}
-            }else if (path === 'customer'){
-                return {customers : state.customers.filter(customer=>customer._id !== id)}
+                return {employees : state.purchases.filter(purchase=>purchase._id !== id)}
+            }else if (path === 'designation'){
+                return {designations : state.designations.filter(designation=>designation._id !== id)}
+            }else if (path === 'section'){
+                return {sections : state.sections.filter(section=>section._id !== id)}
             }else if (path === 'auth'){
                 return {users : state.users.filter(user=>user._id !== id)}
             }
         })
     }
 })
-const useUserStore =create(
+const useStore =create(
     devtools(
         persist(createUserStore,{
             name : "user"
         })
     )
 )
-export default useUserStore;
+export default useStore;

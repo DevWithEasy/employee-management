@@ -8,10 +8,10 @@ import { Heading, Loading_request } from '../../components/Index';
 import toast_alert from '../../_utils/toast_alert';
 import baseUrl from '../../_utils/baseUrl';
 import handleChange from '../../_utils/handleChange';
-import useUserStore from '../../_store/userStore';
+import useStore from '../../_store/userStore';
 
 const Update_user = () => {
-    const { users } = useUserStore()
+    const { users } = useStore()
     const { id } = useParams()
     const toast = useToast()
     const navigate = useNavigate()
@@ -81,7 +81,7 @@ const Update_user = () => {
                             name='name'
                             value={value.name}
                             onChange={(e) => handleChange(e, value, setValue)}
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                     <div className='space-y-2'>
@@ -91,7 +91,7 @@ const Update_user = () => {
                             name='email'
                             value={value.email}
                             onChange={(e) => handleChange(e, value, setValue)}
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                     <div className='space-y-2'>
@@ -101,7 +101,7 @@ const Update_user = () => {
                             name='phone'
                             value={value.phone}
                             onChange={(e) => handleChange(e, value, setValue)}
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                     <div className='space-y-2'>
@@ -110,7 +110,7 @@ const Update_user = () => {
                             name='isAdmin'
                             value={value.isAdmin}
                             onChange={(e) => handleChange(e, value, setValue)}
-                            className='w-full p-2 rounded-md border border-gray-300 focus:border-blue-200'
+                            className='w-full p-2 border border-gray-300 focus:border-blue-200'
                         >
                             <option value="true">Admin</option>
                             <option value='false'>User</option>
@@ -122,7 +122,7 @@ const Update_user = () => {
                     <textarea
                         name='address'
                         onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                     />
                 </div>
 
@@ -149,11 +149,11 @@ const Update_user = () => {
                         name='new_password'
                         value={value.new_password}
                         onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                     />
                 </div>}
                 <button
-                    className='px-6 py-2 bg-sky-500 text-white rounded'
+                    className='px-6 py-2 bg-sky-500 text-white'
                 >
                     {
                         loading ? 'Updating...' : 'Submit'

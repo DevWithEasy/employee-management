@@ -73,7 +73,7 @@ const New_user = () => {
                             name='name'
                             onChange={(e) => handleChange(e, value, setValue)}
                             placeholder='Enter user name'
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                     <div className='space-y-2'>
@@ -83,7 +83,7 @@ const New_user = () => {
                             name='email'
                             onChange={(e) => handleChange(e, value, setValue)}
                             placeholder='Enter user email address'
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                     <div className='space-y-2'>
@@ -93,7 +93,7 @@ const New_user = () => {
                             name='phone'
                             onChange={(e) => handleChange(e, value, setValue)}
                             placeholder='Enter user phone number'
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                     <div className='space-y-2'>
@@ -103,7 +103,7 @@ const New_user = () => {
                             name='password'
                             onChange={(e) => handleChange(e, value, setValue)}
                             placeholder='Enter your password'
-                            className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                            className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                         />
                     </div>
                 </div>
@@ -113,11 +113,11 @@ const New_user = () => {
                         name='address'
                         onChange={(e) => handleChange(e, value, setValue)}
                         placeholder='Enter user address'
-                        className='w-full p-2 rounded-md border border-gray-300 focus:outline-sky-500'
+                        className='w-full p-2 border border-gray-300 focus:outline-sky-500'
                     />
                 </div>
                 <button
-                    className='px-6 py-2 bg-sky-500 text-white rounded'
+                    className='px-6 py-2 bg-sky-500 text-white'
                 >
                     Submit
                 </button>

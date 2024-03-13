@@ -4,11 +4,11 @@ import { MdDelete, MdEditSquare } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import {Delete_data, Heading} from '../../components/Index';
 import baseUrl from '../../_utils/baseUrl';
-import useUserStore from '../../_store/userStore';
+import useStore from '../../_store/userStore';
 
 const Users = () => {
     const navigate = useNavigate()
-    const {addUsers,users} = useUserStore()
+    const {addUsers,users} = useStore()
     const [remove,setRemove] = useState(false)
     const [query,setQuery] = useState('')
     
@@ -38,7 +38,7 @@ const Users = () => {
                 type="search"
                 onChange={(e) => setQuery(e.target.value.toLowerCase())}
                 placeholder='Search by name,email,phone'
-                className='w-[350px] py-2 px-4 border border-gray-300 focus:outline-none placeholder:text-gray-300 placeholder:text-sm rounded-full'
+                className='w-[350px] py-1 px-4 border border-gray-300 focus:outline-none placeholder:text-gray-300 placeholder:text-sm'
             />
                 <div
                     className='w-full flex justify-end'

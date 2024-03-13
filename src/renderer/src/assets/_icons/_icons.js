@@ -17,6 +17,7 @@ import users_icon from './users.png'
 import wafer_icon from './waffer.png'
 import water_icon from './water.png'
 import wrong_icon from './wrong.png'
+import designation_icon from './designation.png'
 
 
-export { accounting_icon, administration_icon, attendence_icon, bakery_icon, biscuit_icon, cake_icon, distribution_icon, employee_icon, home_icon, salary_icon, section_icon, selection_icon, snacks_icon, store_icon, user_icon, users_icon, wafer_icon, water_icon, wrong_icon }
+export { accounting_icon, administration_icon, attendence_icon, bakery_icon, biscuit_icon, cake_icon, distribution_icon, employee_icon, home_icon, salary_icon, section_icon, selection_icon, snacks_icon, store_icon, user_icon, users_icon, wafer_icon, water_icon, wrong_icon,designation_icon }

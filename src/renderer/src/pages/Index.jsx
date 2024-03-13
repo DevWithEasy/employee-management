@@ -10,6 +10,7 @@ import Monthly_attendance from "./attendance/Monthly_attendance";
 import Monthly_attendance_book from "./attendance/Monthly_attendance_book";
 import Salaries from "./attendance/Salaries";
 import Update_Attendance from "./attendance/Update_Attendance";
+import Designnation from "./designation/Designnation";
 import Employee from "./employee/Employee";
 import Employees from "./employee/Employees";
 import New_employee from "./employee/New_employee";
@@ -21,4 +22,5 @@ import Update_user from "./users/Update_user";
 import Users from "./users/Users";
 
 
-export {Error404,New_user,Update_user,Salary,Section, Attendence,Users,Attendance_In, Attendance_Out, Employee, Employees, Home, Monthly_attendance, Monthly_attendance_book, New_employee, Protected, Salaries, Signin, Signup, Update_Attendance, Update_employee };
+export { Attendance_In, Attendance_Out, Attendence, Designnation, Employee, Employees, Error404, Home, Monthly_attendance, Monthly_attendance_book, New_employee, New_user, Protected, Salaries, Salary, Section, Signin, Signup, Update_Attendance,  Update_employee, Update_user, Users };
+

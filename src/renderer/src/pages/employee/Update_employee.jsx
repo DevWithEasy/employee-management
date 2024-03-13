@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useUserStore from '../../_store/userStore';
+import useStore from '../../_store/userStore';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import toast_alert from '../../_utils/toast_alert';
@@ -10,7 +10,7 @@ import handleChange from '../../_utils/handleChange';
 import Protected from '../Protected';
 
 const Update_employee = () => {
-    const {addEmployees,employees} = useUserStore();
+    const {addEmployees,employees} = useStore();
     const {id} = useParams()
     const toast = useToast()
     const navigate = useNavigate()
