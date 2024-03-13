@@ -60,7 +60,7 @@ const New_employee = () => {
                     toast,
                     res.data.message
                 )
-                navigate('/employees')
+                // navigate('/employees')
             }
 
         } catch (error) {

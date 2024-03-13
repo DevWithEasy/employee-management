@@ -1,5 +1,7 @@
+import api_url from '../../_utils/api_url';
 import baseUrl from '../../_utils/baseUrl';
 import getID from '../../_utils/getID';
+import { logo } from '../../assets/_icons/_icons';
 
 const EmployeeCard = ({ employee }) => {
 
@@ -13,19 +15,13 @@ const EmployeeCard = ({ employee }) => {
                 <div
                     className='absolute right-2 text-white'
                 >
-                    <p
-                        className='text-xl font-extrabold'
-                    >
-                        Home Plus
-                    </p>
-                    <p
-                        className='text-xs'
-                    >
-                        {employee?.user?.name} Outlet {employee?.user?.address}
-                    </p>
+                    <img
+                        src={logo}
+                        className='w-16'
+                    />
                 </div>
                 <img
-                    src={`${baseUrl}/image/${employee?.image}`}
+                    src={`${api_url}/image/${employee?.image}`}
                     className='absolute h-[100px] w-[100px] bg-white p-1 rounded-full ml-5 mt-2'
                 />
             </div>
@@ -43,7 +39,7 @@ const EmployeeCard = ({ employee }) => {
                     <p
                         className='text-sm'
                     >
-                        {employee?.designation}
+                        {employee?.designation?.name}
                     </p>
                 </div>
 

@@ -9,6 +9,7 @@ import toast_alert from '../../_utils/toast_alert';
 import { employee_icon, selection_icon } from '../../assets/_icons/_icons';
 import { Delete_data, Heading, Loading_request } from '../../components/Index';
 import { getData } from '../../_api/_apicrud';
+import api_url from '../../_utils/api_url';
 
 const Employees = () => {
     const { addEmployees, employees, addSections, sections } = useStore()
@@ -26,7 +27,7 @@ const Employees = () => {
             return
         }
         try {
-            const res = await axios.get(`${baseUrl}/api/employee/${e.target.value}`, {
+            const res = await axios.get(`${api_url}/api/employee/all/${e.target.value}`, {
                 headers: {
                     authorization: localStorage.getItem('token')
                 }
@@ -110,10 +111,16 @@ const Employees = () => {
                                             Image
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-center">
+                                            ID
+                                        </th>
+                                        <th scope="col" className="px-6 py-3 text-center">
                                             Name
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-center">
                                             Phone
+                                        </th>
+                                        <th scope="col" className="px-6 py-3 text-center">
+                                            Section
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-center">
                                             Designation
@@ -135,9 +142,12 @@ const Employees = () => {
                                             >
                                                 <td className="px-6 py-3 text-center">
                                                     <img
-                                                        src={`${baseUrl}/image/${employee?.image}`}
+                                                        src={`${api_url}/image/${employee?.image}`}
                                                         className='w-10'
                                                     />
+                                                </td>
+                                                <td className="px-6 py-3 text-center">
+                                                    {employee?.IDNo}
                                                 </td>
                                                 <td className="px-6 py-3 text-center">
                                                     {employee?.name}
@@ -146,15 +156,18 @@ const Employees = () => {
                                                     {employee?.phone}
                                                 </td>
                                                 <td className="px-6 py-3 text-center">
-                                                    {employee?.salary}
+                                                    {employee?.designation?.name}
                                                 </td>
                                                 <td className="px-6 py-3 text-center">
-                                                    {employee?.designation}
+                                                    {employee?.section?.name}
+                                                </td>
+                                                <td className="px-6 py-3 text-center">
+                                                    {employee?.salary}
                                                 </td>
                                                 <td className="px-6 py-3 text-center space-x-2">
                                                     <button
                                                         onClick={() => {
-                                                            navigate(`/admin/employee/${employee._id}`)
+                                                            navigate(`/employee/${employee._id}`)
                                                         }}
                                                         className='p-1.5 bg-sky-400 text-white rounded-md'
                                                     >
@@ -162,7 +175,7 @@ const Employees = () => {
                                                     </button>
                                                     <button
                                                         onClick={() => {
-                                                            navigate(`/admin/employee/update/${employee._id}`)
+                                                            navigate(`/employee/update/${employee._id}`)
                                                         }}
                                                         className='p-1.5 bg-green-400 text-white rounded-md'
                                                     >

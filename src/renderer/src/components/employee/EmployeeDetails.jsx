@@ -1,6 +1,7 @@
 import React from 'react';
 import baseUrl from '../../_utils/baseUrl';
 import getID from '../../_utils/getID';
+import api_url from '../../_utils/api_url';
 
 const EmployeeDetails = ({ employee }) => {
     return (
@@ -11,7 +12,7 @@ const EmployeeDetails = ({ employee }) => {
                 className='pt-2'
             >
                 <img
-                    src={`${baseUrl}/image/${employee?.image}`}
+                    src={`${api_url}/image/${employee?.image}`}
                     className='h-48 rounded-md'
                 />
             </div>
@@ -73,7 +74,7 @@ const EmployeeDetails = ({ employee }) => {
                             <td className='p-2'>Designation </td>
                             <td className='p-2'> : </td>
                             <td className='p-2'>
-                                {employee?.designation}
+                                {employee?.designation?.name}
                             </td>
                         </tr>
                         <tr>
