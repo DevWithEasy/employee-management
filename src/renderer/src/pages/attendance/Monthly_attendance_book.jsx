@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import month from '../../_utils/Month';
 import {Heading} from '../../components/Index';
 import toast_alert from '../../_utils/toast_alert';
@@ -10,23 +10,30 @@ import { useToast } from '@chakra-ui/react';
 import getID from '../../_utils/getID';
 import statusColor from '../../_utils/statusColor';
 import Protected from '../Protected';
+import api_url from '../../_utils/api_url';
+import {useParams} from 'react-router-dom'
+import { getData } from '../../_api/_apicrud';
+import useStore from '../../_store/userStore';
+import Select from 'react-select';
+import customStyles from '../../_utils/selectStyle';
 
 const Monthly_attendance_book = () => {
     const toast = useToast()
+    const {id} = useParams()
+    const { sections } = useStore()
     const [loading, setLoading] = useState(false)
     const [new_attendance, setNew_attendance] = useState(false)
     const [data, setData] = useState([])
+    const [section,setSection] = useState()
     const [value, setValue] = useState({
         start: month('', 'first'),
         end: month('', 'last')
     })
 
-    const getMonthlyAttendanceBook = async (e) => {
-        e.preventDefault()
-
+    const getMonthlyAttendanceBook = async (id) => {
         try {
             setLoading(true)
-            const res = await axios.post(`${baseUrl}/api/attendance/monthlybook`, value, {
+            const res = await axios.post(`${api_url}/api/attendance/monthlybook/${id}`, value, {
                 headers: {
                     authorization: localStorage.getItem('token')
                 }
@@ -96,6 +103,10 @@ const Monthly_attendance_book = () => {
 
     const monthlyAttendanceBook = new MonthlyAttendanceBook(value.start, data)
     
+    useEffect(()=>{
+        getMonthlyAttendanceBook(id)
+    },[])
+
     return (
         <div
             className='p-2'
@@ -104,36 +115,47 @@ const Monthly_attendance_book = () => {
             <div
                 className='relative w-full'
             >
-                <form
-                    onSubmit={(e) => getMonthlyAttendanceBook(e)}
-                    className='w-full p-2 flex space-x-2'
+                <div
+                    className='w-full py-2 flex items-center space-x-2'
                 >
+                    <Select
+                            styles={customStyles}
+                            defaultValue={section}
+                            onChange={setSection}
+                            options={sections.map(d => {
+                                return {
+                                    value: d._id,
+                                    label: d.name
+                                }
+                            })}
+                            className='w-3/12 z-50'
+                        />
                     <input
                         type='date'
                         name='start'
                         value={value?.start}
                         onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-3/12 p-2 border rounded-md border-gray-300 focus:outline-none focus:border-sky-500'
+                        className='w-2/12 p-2 border border-gray-300 focus:outline-sky-500'
                     />
                     <input
                         type='date'
                         name='end'
                         value={value?.end}
                         onChange={(e) => handleChange(e, value, setValue)}
-                        className='w-3/12 p-2 border rounded-md border-gray-300 focus:outline-none focus:border-sky-500'
+                        className='w-2/12 p-2 border border-gray-300 focus:outline-sky-500'
                     />
                     <button
-                        type='submit'
-                        className='w-32 py-2 bg-sky-500 text-white rounded-md hover:bg-sky-600'
+                        onClick={() => getMonthlyAttendanceBook(section?.value)}
+                        className='w-32 py-2.5 bg-sky-500 text-white hover:bg-sky-600'
                     >
                         {loading ? 'Finding...' : 'Find'}
                     </button>
-                </form>
+                </div>
                 <button
                     onClick={() => setNew_attendance(!new_attendance)}
-                    className={`absolute right-0 top-3 p-2 text-xs text-white rounded ${new_attendance ? 'bg-green-500' : 'bg-red-500'}`}
+                    className={`absolute right-0 top-3 p-2 text-white rounded ${new_attendance ? 'bg-green-500' : 'bg-red-500'}`}
                 >
-                    {new_attendance ? 'Enable' : 'Disable'} new attendance
+                    {new_attendance ? 'Enable' : 'Disable'} Attendance
                 </button>
             </div>
             <div
@@ -227,7 +249,7 @@ const Monthly_attendance_book = () => {
                                 .map((a, i) =>
                                     <tr
                                         key={i}
-                                        className='border-b hover:bg-sky-50'
+                                        className='border-b'
                                     >
                                         <td
                                             className='sticky left-0 bg-white z-10'

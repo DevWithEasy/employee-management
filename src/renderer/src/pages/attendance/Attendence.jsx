@@ -1,44 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Heading} from '../../components/Index';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import MonthlyBook_View from '../../components/attendence/MonthlyBook_View';
+import Monthly_View from '../../components/attendence/Monthly_View';
 
 const Attendence = () => {
+    const navigate = useNavigate()
+    const [bookView,setBookView] = useState(false)
+    const [monthlyView,setMonthlyView] = useState(false)
+    const [] = useState()
+    const [] = useState()
+    const [] = useState()
     return (
         <div
             className='px-2 space-y-3'
         >
             <Heading>Attendence</Heading>
             <div>
-                <Link
-                    to='/attendence/in'
+                <button
+                    onClick={()=>navigate('/attendence/in')}
                     className='px-4 py-1 border-l border-y'
                 >
                     In time
-                </Link>
-                <Link
-                    to='/attendence/out'
+                </button>
+                <button
+                    onClick={()=>navigate('/attendence/out')}
                     className='px-4 py-1 border-l border-y'
                 >
                     Out Time
-                </Link>
-                <Link
+                </button>
+                <button
+                    onClick={()=>navigate()}
                     to='/attendence/update'
                     className='px-4 py-1 border-l border-y'
                 >
                     Update
-                </Link>
-                <Link
-                    to='/attendence/monthly'
-                    className='px-4 py-1 border-l border-y'
-                >
-                    Monthly
-                </Link>
-                <Link
-                    to='/attendence/book'
-                    className='px-4 py-1 border'
-                >
-                    Book
-                </Link>
+                </button>
+                <Monthly_View/>
+                <MonthlyBook_View/>
             </div>
         </div>
     );

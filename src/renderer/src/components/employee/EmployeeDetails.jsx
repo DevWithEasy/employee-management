@@ -13,7 +13,7 @@ const EmployeeDetails = ({ employee }) => {
             >
                 <img
                     src={`${api_url}/image/${employee?.image}`}
-                    className='h-48 rounded-md'
+                    className='w-48 h-48 rounded-md'
                 />
             </div>
             <div

@@ -67,11 +67,11 @@ function App() {
         <Update_Attendance/>
       </Layout>}/>
 
-      <Route path='/attendence/monthly' element={<Layout>
+      <Route path='/attendence/monthly/:section/:id' element={<Layout>
         <Monthly_attendance/>
       </Layout>}/>
 
-      <Route path='/attendence/book' element={<Layout>
+      <Route path='/attendence/book/:id' element={<Layout>
         <Monthly_attendance_book/>
       </Layout>}/>
 

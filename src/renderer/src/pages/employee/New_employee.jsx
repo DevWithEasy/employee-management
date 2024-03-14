@@ -11,6 +11,7 @@ import toast_alert from '../../_utils/toast_alert';
 import useStore from '../../_store/userStore';
 import { getData } from '../../_api/_apicrud';
 import Select from 'react-select';
+import customStyles from '../../_utils/selectStyle';
 
 
 const New_employee = () => {
@@ -73,15 +74,6 @@ const New_employee = () => {
             )
         }
     }
-
-    const customStyles = {
-        control: (provided, state) => ({
-            ...provided,
-            borderRadius: state.isFocused ? '3px' : '0px',
-            padding: '2px',
-            borderColor: state.isFocused ? '#0ea5e9' : '#d1d5db',
-        }),
-    };
 
     useEffect(() => {
         getData({
