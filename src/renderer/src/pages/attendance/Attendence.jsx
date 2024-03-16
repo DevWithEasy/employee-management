@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {Heading} from '../../components/Index';
 import { useNavigate } from 'react-router-dom';
-import MonthlyBook_View from '../../components/attendence/MonthlyBook_View';
-import Monthly_View from '../../components/attendence/Monthly_View';
+import MonthlyBook_View from '../../components/attendance/MonthlyBook_View';
+import Monthly_View from '../../components/attendance/Monthly_View';
 
 const Attendence = () => {
     const navigate = useNavigate()

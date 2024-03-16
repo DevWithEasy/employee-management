@@ -26,7 +26,7 @@ const Monthly_View = () => {
             action: addSections
         })
     }, [])
-    const handleGo = (section) => {
+    const handleGo = () => {
         onClose()
         setTimeout(() => {
             navigate(`/attendence/monthly/${section.value}/${id}`)
@@ -37,7 +37,7 @@ const Monthly_View = () => {
             <button
                 className='px-4 py-1 border'
                 onClick={onOpen}>
-                Book
+                Monthly
             </button>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

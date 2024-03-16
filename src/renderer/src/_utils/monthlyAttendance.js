@@ -42,7 +42,7 @@ class MonthlyAttendance {
 
         const newAttendanceArray = []
         
-        this.attendances.forEach(attendance => {
+        this.attendances?.forEach(attendance => {
             const day = new Date(attendance.date).getDate()
             newAttendanceArray.push({ ...attendance, day })
         })
@@ -64,19 +64,19 @@ class MonthlyAttendance {
         return attendances
     }
     workedDay(){
-        return this.attendances.length
+        return this.attendances?.length
     }
     presentDay(){
-        return this.attendances.filter(attendance=>attendance.status === 'P').length
+        return this.attendances?.filter(attendance=>attendance.status === 'P').length
     }
     absentDay(){
-        return this.attendances.filter(attendance=>attendance.status === 'A').length
+        return this.attendances?.filter(attendance=>attendance.status === 'A').length
     }
     leaveDay(){
-        return this.attendances.filter(attendance=>attendance.status === 'L').length
+        return this.attendances?.filter(attendance=>attendance.status === 'L').length
     }
     holiDay(){
-        return this.attendances.filter(attendance=>attendance.status === 'H').length
+        return this.attendances?.filter(attendance=>attendance.status === 'H').length
     }
     daySummary(){
         return `P-(${this.presentDay()}),A-(${this.absentDay()}),H-(${this.holiDay()}),L-(${this.leaveDay()}) of ${this.attendances.length} days of ${this.days()}`

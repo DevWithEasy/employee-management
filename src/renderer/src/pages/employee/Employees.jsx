@@ -53,6 +53,8 @@ const Employees = () => {
             action: addSections
         })
     }, [])
+
+    
     return (
         <div
             className='px-2 space-y-2'
@@ -111,7 +113,7 @@ const Employees = () => {
                                             Image
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-center">
-                                            ID
+                                            ID No
                                         </th>
                                         <th scope="col" className="px-6 py-3 text-center">
                                             Name
@@ -135,7 +137,7 @@ const Employees = () => {
                                 </thead>
                                 <tbody>
                                     {employees &&
-                                        employees.filter(employee => employee._id.toLowerCase().includes(query) || employee.name.toLowerCase().includes(query) || employee.phone.toLowerCase().includes(query))
+                                        employees.filter(employee => employee?.IDNo.toString().toLowerCase().includes(query) || employee?.name.toLowerCase().includes(query) || employee?.phone.toLowerCase().includes(query))
                                             .map((employee) => <tr
                                                 key={employee._id}
                                                 className='bg-white cursor-pointer border-b'

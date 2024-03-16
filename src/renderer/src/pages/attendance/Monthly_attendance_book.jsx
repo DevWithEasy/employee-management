@@ -16,6 +16,7 @@ import { getData } from '../../_api/_apicrud';
 import useStore from '../../_store/userStore';
 import Select from 'react-select';
 import customStyles from '../../_utils/selectStyle';
+import findSection from '../../_utils/findSection';
 
 const Monthly_attendance_book = () => {
     const toast = useToast()
@@ -24,7 +25,7 @@ const Monthly_attendance_book = () => {
     const [loading, setLoading] = useState(false)
     const [new_attendance, setNew_attendance] = useState(false)
     const [data, setData] = useState([])
-    const [section,setSection] = useState()
+    const [section,setSection] = useState(findSection(sections,id))
     const [value, setValue] = useState({
         start: month('', 'first'),
         end: month('', 'last')
