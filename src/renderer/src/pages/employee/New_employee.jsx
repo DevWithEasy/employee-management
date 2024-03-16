@@ -61,7 +61,7 @@ const New_employee = () => {
                     toast,
                     res.data.message
                 )
-                // navigate('/employees')
+                navigate(`/employees?q=${res.data.data.section}`)
             }
 
         } catch (error) {

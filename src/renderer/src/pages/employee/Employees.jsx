@@ -2,32 +2,37 @@ import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { MdDelete, MdEditSquare, MdInfo } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useStore from '../../_store/userStore';
-import baseUrl from '../../_utils/baseUrl';
 import toast_alert from '../../_utils/toast_alert';
 import { employee_icon, selection_icon } from '../../assets/_icons/_icons';
 import { Delete_data, Heading, Loading_request } from '../../components/Index';
 import { getData } from '../../_api/_apicrud';
 import api_url from '../../_utils/api_url';
+import customStyles from '../../_utils/selectStyle';
+import Select from 'react-select'
+import findSection from '../../_utils/findSection';
 
 const Employees = () => {
     const { addEmployees, employees, addSections, sections } = useStore()
     const toast = useToast()
     const navigate = useNavigate()
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const q = searchParams.get('q');
     const [remove, setRemove] = useState(false)
     const [query, setQuery] = useState('')
     const [loading, setLoading] = useState(false)
     const [section, setSection] = useState(null)
 
-    const getAllEmployee = async (e) => {
-        setSection(e.target.value)
+    const getAllEmployee = async (section) => {
+        setSection(section)
         setLoading(true)
-        if (!e.target.value) {
+        if (!section) {
             return
         }
         try {
-            const res = await axios.get(`${api_url}/api/employee/all/${e.target.value}`, {
+            const res = await axios.get(`${api_url}/api/employee/all/${section?.value}`, {
                 headers: {
                     authorization: localStorage.getItem('token')
                 }
@@ -52,9 +57,12 @@ const Employees = () => {
             path: 'section',
             action: addSections
         })
+        if(q){
+            setSection(findSection(sections, q))
+            getAllEmployee(findSection(sections, q))
+        }
     }, [])
 
-    
     return (
         <div
             className='px-2 space-y-2'
@@ -66,28 +74,23 @@ const Employees = () => {
                 <div
                     className='w-1/2 flex items-center'
                 >
-                    <select
-                        onChange={(e) => getAllEmployee(e)}
-                        className='w-[150px] py-[5px] px-2 border-l border-y border-gray-300 focus:outline-none placeholder:text-gray-300 placeholder:text-sm rounded-l'
-                    >
-                        <option value=''>Select section</option>
-
-                        {
-                            sections.map(section =>
-                                <option
-                                    key={section._id}
-                                    value={section._id}
-                                >
-                                    {section?.name}
-                                </option>
-                            )
-                        }
-                    </select>
+                    <Select
+                        styles={customStyles}
+                        defaultValue={section}
+                        onChange={getAllEmployee}
+                        options={sections.map(d => {
+                            return {
+                                value: d._id,
+                                label: d.name
+                            }
+                        })}
+                        className='w-1/2'
+                    />
                     <input
                         type="search"
                         onChange={(e) => setQuery(e.target.value.toLowerCase())}
                         placeholder='Search by id'
-                        className='w-[250px] py-[4.5px] px-4 border border-l-none border-gray-300 focus:outline-none placeholder:text-gray-300 placeholder:text-sm rounded-r'
+                        className='w-1/2 p-2 border border-gray-300 focus:outline-sky-500'
                     />
                 </div>
                 <div

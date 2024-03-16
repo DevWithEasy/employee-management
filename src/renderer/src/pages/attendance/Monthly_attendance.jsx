@@ -101,7 +101,6 @@ const Monthly_attendance = () => {
         getEmployeeMonthlyAttendance()
     }, [])
 
-    console.log(employee)
     return (
         <div
             className='p-1'
@@ -336,25 +335,25 @@ const Monthly_attendance = () => {
                                             className='absolute -top-10 -left-16 hidden p-2 space-x-2 bg-white rounded-md border shadow group-hover:block'
                                         >
                                             <button
-                                                onClick={() => updateAttendance(value?.id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'P')}
+                                                onClick={() => updateAttendance(employee?._id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'P')}
                                                 className={`h-7 w-7  rounded-full ${day?.attendance?.status === 'P' ? 'bg-blue-500 text-white' : 'bg-sky-50 text-sky-500 hover:bg-blue-500 hover:text-white'}`}
                                             >
                                                 P
                                             </button>
                                             <button
-                                                onClick={() => updateAttendance(value?.id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'A')}
+                                                onClick={() => updateAttendance(employee?._id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'A')}
                                                 className={`h-7 w-7  rounded-full ${day?.attendance?.status === 'A' ? 'bg-red-500 text-white' : 'bg-red-50 text-red-500 hover:bg-red-500 hover:text-white'}`}
                                             >
                                                 A
                                             </button>
                                             <button
-                                                onClick={() => updateAttendance(value?.id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'L')}
+                                                onClick={() => updateAttendance(employee?._id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'L')}
                                                 className={`h-7 w-7  rounded-full ${day?.attendance?.status === 'L' ? 'bg-yellow-500 text-white' : 'bg-yellow-50 text-yellow-500 hover:bg-yellow-500 hover:text-white'}`}
                                             >
                                                 L
                                             </button>
                                             <button
-                                                onClick={() => updateAttendance(value?.id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'H')}
+                                                onClick={() => updateAttendance(employee?._id, day?.attendance?._id, monthlyAttendance.findDate(day?.day), 'H')}
                                                 className={`h-7 w-7  rounded-full ${day?.attendance?.status === 'H' ? 'bg-green-500 text-white' : 'bg-green-50 text-green-500 hover:bg-green-500 hover:text-white'}`}
                                             >
                                                 H
